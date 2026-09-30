@@ -1,0 +1,97 @@
+# Thyristor-Based-DC-Motor-Speed-Control
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Thyristor DC Motor Speed Control</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: #f2f2f2;
+            padding: 40px;
+        }
+
+        .box {
+            background: white;
+            padding: 25px;
+            max-width: 500px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        input {
+            width: 80%;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        #speed {
+            color: blue;
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h2>Thyristor-Based DC Motor Speed Control</h2>
+
+    <p>Firing Angle: <span id="angleValue">30</span>°</p>
+
+    <input type="range"
+           id="angle"
+           min="0"
+           max="180"
+           value="30"
+           oninput="controlMotor()">
+
+    <h3>Motor Speed</h3>
+    <p id="speed">83%</p>
+
+    <button onclick="startMotor()">Start Motor</button>
+    <button onclick="stopMotor()">Stop Motor</button>
+
+    <p id="status">Motor Stopped</p>
+
+</div>
+
+<script>
+
+function controlMotor() {
+
+    let angle = document.getElementById("angle").value;
+
+    document.getElementById("angleValue").innerHTML = angle;
+
+    // Simple simulation:
+    // Smaller firing angle = higher motor speed
+    let speed = 100 - (angle / 180) * 100;
+
+    document.getElementById("speed").innerHTML =
+        speed.toFixed(1) + "%";
+}
+
+function startMotor() {
+    document.getElementById("status").innerHTML =
+        "Motor Running";
+}
+
+function stopMotor() {
+    document.getElementById("status").innerHTML =
+        "Motor Stopped";
+
+    document.getElementById("speed").innerHTML = "0%";
+}
+
+</script>
+
+</body>
+</html>

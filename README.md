@@ -1,1 +1,0 @@
-# Thyristor-Based-DC-Motor-Speed-Control
